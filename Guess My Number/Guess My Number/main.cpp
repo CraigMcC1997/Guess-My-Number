@@ -11,6 +11,7 @@ void init()
 
 int main(int arc, char* argv)
 {
+	init();
 	game->playGame();
 
 	return 0;

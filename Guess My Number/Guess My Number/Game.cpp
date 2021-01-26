@@ -3,7 +3,7 @@
 int Game::randNum()
 {
 	srand(static_cast<unsigned int>(time(0)));	//seeds the RNG
-	return rand() % 101;	//random number between 1-100
+	return rand() % highestNum + 1;	//random number between 1-100
 }
 
 void Game::playGame()
@@ -12,16 +12,22 @@ void Game::playGame()
 	int guess = 0;
 	int secretNumber = 0;
 
-	cout << "Welcome to GUESS MY NUMBER \n\n";
+	cout << "Welcome to GUESS MY NUMBER \n";
+	cout << "Please chose a number between " << lowestNum << " and " << highestNum <<" \n\n";
 
 	secretNumber = randNum();
 
 	do {
+		if(tries > 0)
+			cout << "Guesses Taken: " << tries << "\n";
+
 		cout << "Enter a guess: ";
 		cin >> guess;
-		++tries;
+		tries++;
 
-		if (guess > secretNumber)
+		if(guess > (highestNum -1))
+			cout << "Please chose a number between " << lowestNum << " and " << highestNum << " \n\n";
+		else if (guess > secretNumber)
 			cout << "Too high!\n\n";
 		else if (guess < secretNumber)
 			cout << "Too low!\n\n";
