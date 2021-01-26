@@ -12,6 +12,8 @@ private:
 
 public:
 	int randNum();
+	void changeRounds();
+	void currentRound();
 	void playGame();
 };
 
