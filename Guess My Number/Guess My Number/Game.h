@@ -2,6 +2,8 @@
 #include <iostream>
 #include <ctime>
 #include <limits>
+#include <SDL.h>
+#include <glew.h>
 
 using namespace std;
 
@@ -18,5 +20,6 @@ public:
 	void changeRounds();
 	void currentRound();
 	void playGame();
+	void draw(SDL_Window*);
 };
 
