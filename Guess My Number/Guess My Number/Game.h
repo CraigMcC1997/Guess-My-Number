@@ -13,6 +13,7 @@ private:
 	int overallGuesses = 0;
 
 public:
+	void menu();
 	int randNum();
 	void changeRounds();
 	void currentRound();
