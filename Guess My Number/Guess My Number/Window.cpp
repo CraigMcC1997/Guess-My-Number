@@ -29,10 +29,5 @@ SDL_Window* Window::setupRC(SDL_GLContext& context)
 SDL_Window* Window::getWindow()
 {
 	// clear the screen
-	
-	//!!!!  include opengl to make this work, use the honours project as basis  !!!!!
-	//glClearColor(0.5f, 0.5f, 0.5f, 1.0f);
-	//glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-
 	return window;
 }

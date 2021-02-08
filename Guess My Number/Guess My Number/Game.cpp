@@ -15,13 +15,13 @@ void Game::menu()
 	switch (option)
 	{
 	case 1:
-		changeRounds();
+		changeRounds(); //Play game
 		break;
-	case 2:
-		//load highscores
+	case 2:	
+		highscores.displayHighscores();
 		break;	
 	case 3:
-		//close game window
+		exit(0); //close game window
 		break;
 	default:
 		cout << "please chose a valid option" << endl;
@@ -36,11 +36,17 @@ int Game::randNum()
 
 void Game::playGame()
 {
-	cout << "Welcome to GUESS MY NUMBER \n\n";
+	cout << "----Welcome to GUESS MY NUMBER---- \n\n";
 	menu();
-	cout << "\n RESULTS: \n";
-	cout << "Total Guesses Taken: "<< overallGuesses << "\n";
-	cout << "\nThanks for playing GUESS MY NUMBER \n";
+}
+
+void Game::gameOver()
+{
+	cout << "----GAME OVER!!---- \n";
+	cout << "\nRESULTS: \n";
+	cout << "Total Guesses Taken: " << overallGuesses << "\n";
+	cout << "\nThanks for playing GUESS MY NUMBER \n\n";
+	cout << "---------------------------------------------- \n\n";
 }
 
 void Game::changeRounds()
@@ -54,6 +60,9 @@ void Game::changeRounds()
 		this->currentRound();
 		currentRound++;
 	}
+
+	//display text to show the game has reached its conclusion
+	gameOver();
 }
 
 void Game::currentRound()

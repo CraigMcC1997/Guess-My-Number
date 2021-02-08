@@ -143,12 +143,16 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Game.cpp" />
+    <ClCompile Include="HighScores.cpp" />
+    <ClCompile Include="LoadFromFile.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Window.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AbstractWindow.H" />
     <ClInclude Include="Game.h" />
+    <ClInclude Include="HighScores.h" />
+    <ClInclude Include="LoadFromFile.h" />
     <ClInclude Include="Window.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
