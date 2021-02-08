@@ -8,6 +8,7 @@ void Game::menu()
 	cout << "1. " << "Play Game" << endl;
 	cout << "2. " << "HighScores" << endl;
 	cout << "3. " << "Exit" << endl;
+	cout << "4. " << "compare" << endl;
 	cout << "Choice: ";
 
 	cin >> option;
@@ -45,6 +46,11 @@ void Game::gameOver()
 	cout << "----GAME OVER!!---- \n";
 	cout << "\nRESULTS: \n";
 	cout << "Total Guesses Taken: " << overallGuesses << "\n";
+
+	highscores.compareHighscore(overallGuesses);	//check if the player made it into the top 10
+	//put a check here if the player made it into the top 10 and display this to the user, i.e score, position and
+	//overall table
+
 	cout << "\nThanks for playing GUESS MY NUMBER \n\n";
 	cout << "---------------------------------------------- \n\n";
 }
