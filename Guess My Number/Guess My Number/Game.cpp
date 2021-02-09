@@ -23,6 +23,8 @@ void Game::menu()
 	case 3:
 		exit(0); //close game window
 		break;
+	case 4:
+		highscores.compareHighscore(51);
 	default:
 		cout << "please chose a valid option" << endl;
 	}

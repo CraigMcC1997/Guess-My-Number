@@ -18,5 +18,6 @@ public:
 	}
 	void displayHighscores();
 	void compareHighscore(int);
+	void updateHighscores(int, string::size_type);
 	void saveNewScores();
 };
