@@ -1,18 +1,22 @@
 #pragma once
 #include <iostream>
-#include "LoadFromFile.h"
+#include "HandleFile.h"
+#include <algorithm>
+
+using namespace std;
 
 class HighScores
 {
 private:
-	LoadFromFile loadFile = LoadFromFile();
-	const int MAX_HIGHSCORE = 10;
-	string highScores[10];
+	HandleFile handleFile = HandleFile();
+	const int NUM_HIGHSCORES = 10;
+	string highScores[11];
 public:
 	HighScores()
 	{
-		loadFile.loadAll("highscores.txt", highScores, MAX_HIGHSCORE);	//load highscores
+		handleFile.loadAll("highscores.txt", highScores, NUM_HIGHSCORES);	//load highscores
 	}
 	void displayHighscores();
-	void compareHighscore(int );
+	void compareHighscore(int);
+	void saveNewScores();
 };

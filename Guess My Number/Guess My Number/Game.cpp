@@ -8,7 +8,6 @@ void Game::menu()
 	cout << "1. " << "Play Game" << endl;
 	cout << "2. " << "HighScores" << endl;
 	cout << "3. " << "Exit" << endl;
-	cout << "4. " << "compare" << endl;
 	cout << "Choice: ";
 
 	cin >> option;
@@ -57,7 +56,7 @@ void Game::gameOver()
 
 void Game::changeRounds()
 {
-	const int MAX_ROUNDS = 3;
+	const int MAX_ROUNDS = 2;
 	int currentRound = 1;
 
 	for (int i = 0; i < MAX_ROUNDS; i++)
