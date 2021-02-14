@@ -1,13 +1,5 @@
 #include "HandleFile.h"
 
-fstream& HandleFile::GotoLine(fstream& file, unsigned int num) {
-	file.seekg(ios::beg);
-	for (int i = 0; i < num; ++i) {
-		file.ignore(numeric_limits<streamsize>::max(), '\n');
-	}
-	return file;
-}
-
 //VERY SIMPLE, CAN BE UPDATED FOR ERROR CHECKING
 void HandleFile::loadAll(string fileName, string array[], int size)
 {

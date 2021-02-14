@@ -17,7 +17,7 @@ public:
 		handleFile.loadAll("highscores.txt", highScores, NUM_HIGHSCORES);	//load highscores
 	}
 	void displayHighscores();
-	void compareHighscore(int);
-	void updateHighscores(int, string::size_type);
+	void compareHighscore(int&);
+	void updateHighscores(int&, string::size_type&);
 	void saveNewScores();
 };

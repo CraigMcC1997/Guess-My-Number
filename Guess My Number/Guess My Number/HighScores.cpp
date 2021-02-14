@@ -10,7 +10,7 @@ void HighScores::displayHighscores()
 	}
 }
 
-void HighScores::updateHighscores(int newHighScore, string::size_type sz)
+void HighScores::updateHighscores(int& newHighScore, string::size_type& sz)
 {
     int str_ints[11];   //used for comparing the string values as ints
     int n = sizeof(str_ints) / sizeof(str_ints[0]); //find the size of this array
@@ -31,7 +31,7 @@ void HighScores::updateHighscores(int newHighScore, string::size_type sz)
 }
 
 
-void HighScores::compareHighscore(int currentScore)
+void HighScores::compareHighscore(int& currentScore)
 {
     string::size_type sz;
     int tenthPlace = std::stoi(highScores[NUM_HIGHSCORES - 1], &sz);	//convert string to int

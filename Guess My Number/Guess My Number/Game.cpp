@@ -23,8 +23,8 @@ void Game::menu()
 	case 3:
 		exit(0); //close game window
 		break;
-	case 4:
-		highscores.compareHighscore(51);
+	/*case 4:
+		highscores.compareHighscore(51);*/
 	default:
 		cout << "please chose a valid option" << endl;
 	}
@@ -51,6 +51,8 @@ void Game::gameOver()
 	highscores.compareHighscore(overallGuesses);	//check if the player made it into the top 10
 	//put a check here if the player made it into the top 10 and display this to the user, i.e score, position and
 	//overall table
+
+	overallGuesses = 0;	//resetting overall guesses for the next game
 
 	cout << "\nThanks for playing GUESS MY NUMBER \n\n";
 	cout << "---------------------------------------------- \n\n";
