@@ -3,12 +3,13 @@
 void Game::menu()
 {
 	int option;
-
+	cout << "-------------------------------- \n\n";
 	cout << "MENU:" << endl;
 	cout << "1. " << "Play Game" << endl;
 	cout << "2. " << "HighScores" << endl;
 	cout << "3. " << "Exit" << endl;
 	cout << "Choice: ";
+	
 
 	cin >> option;
 
@@ -38,7 +39,6 @@ int Game::randNum()
 
 void Game::playGame()
 {
-	cout << "----Welcome to GUESS MY NUMBER---- \n\n";
 	menu();
 }
 

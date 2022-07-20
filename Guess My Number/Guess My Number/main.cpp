@@ -18,6 +18,7 @@ void init()
 {
 	//window = new Window(1200, 800, "Guess My Number");
 	//window->setupRC(glContext);
+	cout << "----Welcome to GUESS MY NUMBER---- \n\n";
 
 	game = new Game();
 }

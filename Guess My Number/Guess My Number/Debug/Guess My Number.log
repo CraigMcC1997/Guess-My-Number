@@ -1,7 +1,2 @@
 ﻿  Game.cpp
-  HighScores.cpp
-  HandleFile.cpp
-  main.cpp
-  Window.cpp
-  Generating Code...
-  Guess My Number.vcxproj -> E:\Number-Guesser-repo\Guess My Number\Debug\Guess My Number.exe
+  Guess My Number.vcxproj -> C:\Test-My-Number-repo\Guess My Number\Debug\Guess My Number.exe
