@@ -1,6 +1,7 @@
 #pragma once
 #include <string>
 #include <fstream>
+#include <iostream>
 
 using namespace std;
 
@@ -9,6 +10,6 @@ class HandleFile
 private:
 
 public:
-	void loadAll(string fileName, string array[], int size);
-	void saveToFile(string fileName, string array[], int size);
+	int loadAll(const string& fileName, string scores[]);
+	int saveToFile(const string& fileName, string scores[], int size);
 };

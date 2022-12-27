@@ -1,28 +1,43 @@
 #include "HandleFile.h"
 
 //VERY SIMPLE, CAN BE UPDATED FOR ERROR CHECKING
-void HandleFile::loadAll(string fileName, string array[], int size)
+int HandleFile::loadAll(const string& fileName, string scores[])
 {
 	ifstream inFile(fileName);
-	int count = 0;
 
-	while (count < size)
-	{
-		inFile >> array[count];
+	if (!inFile.is_open()) {
+		cerr << "Failed to open file: " << fileName << endl;
+		return 0;
+	}
+
+	int count = 0;
+	string line;
+
+	while (getline(inFile, line)) {
+		scores[count] = line;
 		count++;
 	}
+
 	inFile.close();
+	return count;
 }
 
-void HandleFile::saveToFile(string fileName, string array[], int size)
+int HandleFile::saveToFile(const string& fileName, string scores[], int size)
 {
 	ofstream outFile(fileName);
-	int count = 0;
 
+	if (!outFile.is_open()) {
+		cerr << "Failed to open file: " << fileName << endl;
+		return 0;
+	}
+
+	int count = 0;
 	while (count < size)
 	{
-		outFile << array[count] << endl;
+		outFile << scores[count] << endl;
 		count++;
 	}
+
 	outFile.close();
+	return count;
 }

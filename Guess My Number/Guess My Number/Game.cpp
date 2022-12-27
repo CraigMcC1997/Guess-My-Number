@@ -3,32 +3,53 @@
 void Game::menu()
 {
 	int option;
-	cout << "-------------------------------- \n\n";
+	cout << "-------------------------------- " << endl;
 	cout << "MENU:" << endl;
-	cout << "1. " << "Play Game" << endl;
-	cout << "2. " << "HighScores" << endl;
-	cout << "3. " << "Exit" << endl;
+	cout << "0. Exit" << endl;
+	cout << "1. Play Game" << endl;
+	cout << "2. HighScores" << endl;
+	cout << "3. Instructions" << endl;
+	cout << "-------------------------------- " << endl;
 	cout << "Choice: ";
-	
 
-	cin >> option;
-
-	switch (option)
+	if (!(cin >> option))
 	{
-	case 1:
-		changeRounds(); //Play game
-		break;
-	case 2:	
-		highscores.displayHighscores();
-		break;	
-	case 3:
-		exit(0); //close game window
-		break;
-	/*case 4:
-		highscores.compareHighscore(51);*/
-	default:
-		cout << "please chose a valid option" << endl;
+		cin.clear();
+		cin.ignore(numeric_limits<streamsize>::max(), '\n');
+		cout << "Please input a numberical value between 0 & 3" << endl;;
 	}
+	else
+	{
+		switch (option)
+		{
+		case 0:
+			exit(0); //close game window
+			break;
+		case 1:
+			changeRounds(); //Play game
+			break;
+		case 2:
+			highscores.displayHighscores(); //display highscore table
+			break;
+		case 3:
+			displayInstructions();
+			break;
+			/*case 4:
+					highscores.compareHighscore(51);*/
+		default:
+			cout << "please chose a valid option" << endl;
+		}
+	}
+}
+
+void Game::displayInstructions()
+{
+	cout << "Chose a number between " << lowestNum << " & " << highestNum << endl;
+	cout << "Until the randomly generated number is found." << endl;
+	cout << "The game will run for 3 rounds. Each guess adding to your score" << endl;
+	cout << "At the end of the three rounds the game will end." << endl;
+	cout << "The less guesses it takes to find the 3 numbers" << endl;
+	cout << "The higher up the leaderboard you will be. Good luck!" << endl;
 }
 
 int Game::randNum()
@@ -48,19 +69,20 @@ void Game::gameOver()
 	cout << "\nRESULTS: \n";
 	cout << "Total Guesses Taken: " << overallGuesses << "\n";
 
-	highscores.compareHighscore(overallGuesses);	//check if the player made it into the top 10
-	//put a check here if the player made it into the top 10 and display this to the user, i.e score, position and
-	//overall table
+	// check if the player made it into the top 10
+	// put a check here if the player made it into the top 10 and display this to the user, i.e score, position and
+	// overall table
+	highscores.compareHighscore(overallGuesses);
 
-	overallGuesses = 0;	//resetting overall guesses for the next game
+	overallGuesses = 0;	// resetting overall guesses for the next game
 
 	cout << "\nThanks for playing GUESS MY NUMBER \n\n";
-	cout << "---------------------------------------------- \n\n";
+	cout << "-------------------------------- " << endl;
 }
 
 void Game::changeRounds()
 {
-	const int MAX_ROUNDS = 2;
+	const int MAX_ROUNDS = 1;
 	int currentRound = 1;
 
 	for (int i = 0; i < MAX_ROUNDS; i++)
@@ -70,7 +92,6 @@ void Game::changeRounds()
 		currentRound++;
 	}
 
-	//display text to show the game has reached its conclusion
 	gameOver();
 }
 
@@ -78,53 +99,56 @@ void Game::currentRound()
 {
 	int tries = 0;
 	int guess;
-	int secretNumber = 0;
+	int secretNumber = randNum();
 
 	cout << "Please chose a number between " << lowestNum << " and " << highestNum << " \n\n";
-
-	secretNumber = randNum();
 
 	do {
 		if (tries > 0)
 			cout << "Guesses Taken: " << tries << "\n";
 
 		cout << "Enter a guess: ";
-		
-		cin >> guess;
-		
-		//error checking
-		//confirms input is in fact a numberical input
-		if (!cin.good())
+
+		if (!(cin >> guess) || !isValidGuess(guess))
 		{
 			cin.clear();
 			cin.ignore(numeric_limits<streamsize>::max(), '\n');
-			cout << "Please input a number ONLY \n\n";
+			cout << "Please input a numberical value between " << lowestNum << " and " << highestNum << " \n\n";
+			continue;
 		}
 		else {
 			tries++;
 
-			if (guess > (highestNum))
-				cout << "Please chose a number between " << lowestNum << " and " << highestNum << " \n\n";
-			else if (guess > secretNumber)
+			switch (compareGuesses(guess, secretNumber)) {
+			case 1:
 				cout << "Too high!\n\n";
-			else if (guess < secretNumber)
+				break;
+			case -1:
 				cout << "Too low!\n\n";
-			else
-			{
+				break;
+			case 0:
 				cout << "\n YOU GOT IT IN " << tries << " GUESSES \n\n";
 				overallGuesses += tries;
+				break;
 			}
 		}
 	} while (guess != secretNumber);
 }
 
-void Game::draw(SDL_Window* window)
+bool Game::isValidGuess(int guess)
 {
-	// clear the screen
-	glClearColor(0.5f, 0.5f, 0.5f, 1.0f);
-	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+	return guess >= lowestNum && guess <= highestNum;
+}
 
-	//do game here
-
-	SDL_GL_SwapWindow(window); // swap buffers
+int Game::compareGuesses(int guess, int secretNumber)
+{
+	if (guess > secretNumber) {
+		return 1;
+	}
+	else if (guess < secretNumber) {
+		return -1;
+	}
+	else {
+		return 0;
+	}
 }
