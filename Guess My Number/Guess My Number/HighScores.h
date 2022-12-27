@@ -9,6 +9,7 @@ class HighScores
 {
 private:
 	HandleFile handleFile = HandleFile();
+	string filename = "../Resources/highscores.txt";
 	const int NUM_HIGHSCORES = 10;
 	string highScores[11];
 	int err;
@@ -16,11 +17,11 @@ private:
 public:
 	HighScores()
 	{
-		err = handleFile.loadAll("highscores.txt", highScores);	//load highscores
+		err = handleFile.loadAll(filename, highScores);	//load highscores
 
 		if (err != NUM_HIGHSCORES)
 		{
-			cerr << "Expected loadAll() to return: " << NUM_HIGHSCORES << "instead returned: " << err << endl;
+			cerr << "Expected loadAll() to return: " << NUM_HIGHSCORES << " instead returned: " << err << endl;
 		}
 	}
 

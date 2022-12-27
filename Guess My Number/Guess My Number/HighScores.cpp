@@ -53,7 +53,7 @@ void HighScores::compareHighscore(int& currentScore)
 
 void HighScores::saveNewScores()
 {
-	int err = handleFile.saveToFile("highscores.txt", highScores, NUM_HIGHSCORES);	//load highscores
+	int err = handleFile.saveToFile(filename, highScores, NUM_HIGHSCORES);	//load highscores
 
 	if (err != NUM_HIGHSCORES)
 	{
