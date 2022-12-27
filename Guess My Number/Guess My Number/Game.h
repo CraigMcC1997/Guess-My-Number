@@ -24,6 +24,8 @@ public:
 	void currentRound();
 	void playGame();
 	void gameOver();
-	void draw(SDL_Window*);
+	void displayInstructions();
+	bool isValidGuess(int guess);
+	int compareGuesses(int guess, int secretNumber);
 };
 

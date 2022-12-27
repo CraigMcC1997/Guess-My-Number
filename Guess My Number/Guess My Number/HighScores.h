@@ -11,13 +11,21 @@ private:
 	HandleFile handleFile = HandleFile();
 	const int NUM_HIGHSCORES = 10;
 	string highScores[11];
+	int err;
+
 public:
 	HighScores()
 	{
-		handleFile.loadAll("highscores.txt", highScores, NUM_HIGHSCORES);	//load highscores
+		err = handleFile.loadAll("highscores.txt", highScores);	//load highscores
+
+		if (err != NUM_HIGHSCORES)
+		{
+			cerr << "Expected loadAll() to return: " << NUM_HIGHSCORES << "instead returned: " << err << endl;
+		}
 	}
+
 	void displayHighscores();
 	void compareHighscore(int&);
-	void updateHighscores(int&, string::size_type&);
+	void updateHighscores(int, string::size_type&);
 	void saveNewScores();
 };
