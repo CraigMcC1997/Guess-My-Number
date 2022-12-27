@@ -11,5 +11,4 @@ Improvements:
   
 - try clearing the screen each time to stop the terminal getting spammed and hard to read
 - try making input/ output more clear to differentiate, currently all mashed together
-- add a "how to play" section which dumbs some instructions and the goal of the game
 - allow the player to add their own range, or add 3 levels, 0-100, 0-1,000, 0-10,000 with differening score boards
