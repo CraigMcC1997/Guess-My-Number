@@ -1,37 +1,46 @@
 #include "HighScores.h"
 
+/**
+ * Save scores to text file.
+ *
+ */
 void HighScores::displayHighscores()
 {
 	cout << "\nHIGH SCORES: " << endl;
 	for (int i = 0; i < NUM_HIGHSCORES; i++)
 	{
-		cout << i + 1 << ". ";
-		cout << highScores[i] << endl;
+		cout << highscores[i].position << ". ";
+		cout << highscores[i].name << " - ";
+		cout << highscores[i].score << endl;
 	}
 }
 
 /**
- * updateHighscores() takes the new highscore and the size of the value as a string.
- * The array of highscores are then converted to ints. The new score is then added to the end
- * of the array and sorted into descending order. The scores are then converted back to strings.
- * Then the highscores file is updated by calling saveNewScores()
+ * Update the highscore table and save these to the text file.
  *
- * @param newHighScore
- * @param sz
+ * @param highscores is the array of score structs
+ * @param name is the players name
+ * @param score is the current score after finishing the game
  */
-void HighScores::updateHighscores(int newHighScore, string::size_type& sz)
+void HighScores::updateHighscores(HighscoreEntry highscores[], const string& name, int score)
 {
-	int str_ints[11];   //used for comparing the string values as ints
-	int n = sizeof(str_ints) / sizeof(str_ints[0]); //find the size of this array
+	// Add the new score to the highscore table
+	HighscoreEntry new_entry;
+	new_entry.name = name;
+	new_entry.score = score;
 
-	for (int i = 0; i < NUM_HIGHSCORES; i++)
-		str_ints[i] = stoi(highScores[i], &sz);    //convert the array of strings to an array of ints
+	//replace the lowest score with the new entry
+	highscores[NUM_HIGHSCORES - 1] = new_entry;
 
-	str_ints[10] = newHighScore;        //add the score to the position top 10 + 1
-	sort(str_ints, str_ints + n);      //sort the new array of 11 intergers
+	// Sort the highscores in descending order
+	sort(highscores, highscores + NUM_HIGHSCORES,
+		[](const HighscoreEntry& a, const HighscoreEntry& b)
+		{ return a.score < b.score; });
 
-	for (int i = 0; i < NUM_HIGHSCORES; i++)
-		highScores[i] = to_string(str_ints[i]);    //convert the ints back to strings
+	// Update the positions of the entries
+	for (int i = 0; i < NUM_HIGHSCORES; i++) {
+		highscores[i].position = i + 1;
+	}
 
 	saveNewScores();    //update the highscores table which will drop the 11th number
 
@@ -39,24 +48,78 @@ void HighScores::updateHighscores(int newHighScore, string::size_type& sz)
 	displayHighscores();                //shows the user the new highscore board
 }
 
-
+/**
+ * Check the players score is within the top 10 scores.
+ * If so then update the high scores table if the player
+ * inputs their name
+ *
+ * @param currentScore is the players score after finishing the game
+ */
 void HighScores::compareHighscore(int& currentScore)
 {
 	string::size_type sz;
-	int tenthPlace = stoi(highScores[NUM_HIGHSCORES - 1], &sz);	//convert string to int
+	int tenthPlace = highscores[NUM_HIGHSCORES - 1].score;
 
 	if (currentScore < tenthPlace) //is score in the top 10
 	{
-		updateHighscores(currentScore, sz);
+		string name;
+		cout << "You made it into the top 10!";
+		cout << "To save your score please enter your first name: ";
+		cin >> name;
+
+		if (!name.empty())
+			updateHighscores(highscores, name, currentScore);
+		else
+			cout << "score not saved";
 	}
 }
 
+/**
+ * convert scores to strings and update the current scores array with these strings.
+ * Then save the updated highscore table to the highscores text file and
+ * check return was as expected
+ */
 void HighScores::saveNewScores()
 {
-	int err = handleFile.saveToFile(filename, highScores, NUM_HIGHSCORES);	//load highscores
+	for (int i = 0; i < NUM_HIGHSCORES; i++) {
+		current_scores[i] = highscores[i].name + ", " + to_string(highscores[i].score);
+	}
 
+	int err = handleFile.saveToFile(filename, current_scores, NUM_HIGHSCORES);	//load highscores
 	if (err != NUM_HIGHSCORES)
 	{
 		cerr << "Expected saveToFile() to return: " << NUM_HIGHSCORES << "instead returned: " << err << endl;
+	}
+}
+
+/**
+ * Store the highscores from the text file and save in
+ * a struct which saves players name, score and position.
+ *
+ */
+void HighScores::inputHighscores()
+{
+	int i = 0;
+	string name;
+	string score_str;
+
+	while (i < NUM_HIGHSCORES) {
+		// Split the line on the comma to get the name and score
+		size_t comma_pos = current_scores[i].find(',');
+
+		if (comma_pos != string::npos) {
+			name = current_scores[i].substr(0, comma_pos);
+			score_str = current_scores[i].substr(comma_pos + 1);
+		}
+		else
+		{
+			cerr << "No comma found on line " << i + 1 << " when inputing highscores from file" << endl;
+		}
+
+		highscores[i].position = i + 1;
+		highscores[i].name = name;
+		highscores[i].score = stoi(score_str);
+
+		i++;
 	}
 }

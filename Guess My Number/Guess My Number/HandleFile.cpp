@@ -1,7 +1,7 @@
 #include "HandleFile.h"
 
 //VERY SIMPLE, CAN BE UPDATED FOR ERROR CHECKING
-int HandleFile::loadAll(const string& fileName, string scores[])
+int HandleFile::loadAll(const string& fileName, string file_lines[])
 {
 	ifstream inFile(fileName);
 
@@ -14,7 +14,7 @@ int HandleFile::loadAll(const string& fileName, string scores[])
 	string line;
 
 	while (getline(inFile, line)) {
-		scores[count] = line;
+		file_lines[count] = line;
 		count++;
 	}
 

@@ -10,6 +10,6 @@ class HandleFile
 private:
 
 public:
-	int loadAll(const string& fileName, string scores[]);
+	int loadAll(const string& fileName, string file_lines[]);
 	int saveToFile(const string& fileName, string scores[], int size);
 };
