@@ -10,16 +10,16 @@ int HandleFile::loadAll(const string& fileName, string file_lines[])
 		return 0;
 	}
 
-	int count = 0;
+	int line_count = 0;
 	string line;
 
 	while (getline(inFile, line)) {
-		file_lines[count] = line;
-		count++;
+		file_lines[line_count] = line;
+		line_count++;
 	}
 
 	inFile.close();
-	return count;
+	return line_count;
 }
 
 int HandleFile::saveToFile(const string& fileName, string scores[], int size)

@@ -42,14 +42,31 @@ void Game::menu()
 	}
 }
 
+/**
+ * Print the instructions from a text file.
+ * Replace the temp highest & lowest strings
+ * with their actual values using string seach
+ * and replace
+ *
+ */
 void Game::displayInstructions()
 {
-	cout << "Chose a number between " << lowestNum << " & " << highestNum << endl;
-	cout << "Until the randomly generated number is found." << endl;
-	cout << "The game will run for 3 rounds. Each guess adding to your score" << endl;
-	cout << "At the end of the three rounds the game will end." << endl;
-	cout << "The less guesses it takes to find the 3 numbers" << endl;
-	cout << "The higher up the leaderboard you will be. Good luck!" << endl;
+	for (auto& i : instructions)
+	{
+		size_t lowestNumPosition = i.find("lowestNum");
+		if (lowestNumPosition != std::string::npos) {
+			// Replace "old_word" with "new_word"
+			i.replace(lowestNumPosition, strlen("lowestNum"), to_string(lowestNum));
+		}
+
+		size_t highestNumPosition = i.find("highestNum");
+		if (highestNumPosition != std::string::npos) {
+			// Replace "old_word" with "new_word"
+			i.replace(highestNumPosition, strlen("highestNum"), to_string(highestNum));
+		}
+
+		cout << i << endl;
+	}
 }
 
 int Game::randNum()

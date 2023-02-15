@@ -7,11 +7,11 @@
 void HighScores::displayHighscores()
 {
 	cout << "\nHIGH SCORES: " << endl;
-	for (int i = 0; i < NUM_HIGHSCORES; i++)
+	for (auto& score : highscores)
 	{
-		cout << highscores[i].position << ". ";
-		cout << highscores[i].name << " - ";
-		cout << highscores[i].score << endl;
+		cout << score.position << ". ";
+		cout << score.name << " - ";
+		cout << score.score << endl;
 	}
 }
 
@@ -24,10 +24,13 @@ void HighScores::displayHighscores()
  */
 void HighScores::updateHighscores(HighscoreEntry highscores[], const string& name, int score)
 {
+	if (name.empty() || score <= 0) {
+		std::cerr << "Invalid input: name cannot be empty and score must be greater than zero.\n";
+		return;
+	}
+
 	// Add the new score to the highscore table
-	HighscoreEntry new_entry;
-	new_entry.name = name;
-	new_entry.score = score;
+	HighscoreEntry new_entry = { name, score };
 
 	//replace the lowest score with the new entry
 	highscores[NUM_HIGHSCORES - 1] = new_entry;
@@ -38,14 +41,19 @@ void HighScores::updateHighscores(HighscoreEntry highscores[], const string& nam
 		{ return a.score < b.score; });
 
 	// Update the positions of the entries
-	for (int i = 0; i < NUM_HIGHSCORES; i++) {
+	for (int i = 0; i < NUM_HIGHSCORES; i++)
+	{
 		highscores[i].position = i + 1;
 	}
 
-	saveNewScores();    //update the highscores table which will drop the 11th number
+	// Save the new highscores to file
+	saveNewScores();
 
+	// Print a message to the user
 	cout << "\n----CONGRADULATIONS YOU MADE IT INTO THE TOP 10----" << endl;
-	displayHighscores();                //shows the user the new highscore board
+
+	// Display the updated highscore table
+	displayHighscores();
 }
 
 /**
@@ -67,10 +75,10 @@ void HighScores::compareHighscore(int& currentScore)
 		cout << "To save your score please enter your first name: ";
 		cin >> name;
 
-		if (!name.empty())
+		if (!name.empty() && currentScore > 0)
 			updateHighscores(highscores, name, currentScore);
 		else
-			cout << "score not saved";
+			cout << "score not valid, could not be saved";
 	}
 }
 
