@@ -1,0 +1,6 @@
+Chose a number between lowestNum & highestNum 
+Until the randomly generated number is found.
+The game will run for 3 rounds. Each guess adding to your score
+At the end of the three rounds, the game will end.
+The fewer guesses it takes to find the 3 numbers
+The higher up the leaderboard you will be. Good luck!

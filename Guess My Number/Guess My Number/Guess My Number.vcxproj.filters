@@ -13,29 +13,56 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Source Files\Handlers">
+      <UniqueIdentifier>{49baa090-00c8-4fa4-ae70-08e005331ba0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Handlers">
+      <UniqueIdentifier>{15d9a9d9-49f5-4dd1-86c3-25ac942bbc00}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Games">
+      <UniqueIdentifier>{ae124e55-d2cc-40c1-8fa8-cf9544f63d76}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Games">
+      <UniqueIdentifier>{4917cee3-0a16-4418-8a00-213315cc1a69}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Game.cpp">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="Instructions_Handler.cpp">
+      <Filter>Source Files\Handlers</Filter>
     </ClCompile>
-    <ClCompile Include="HighScores.cpp">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="HighScores_Handler.cpp">
+      <Filter>Source Files\Handlers</Filter>
     </ClCompile>
-    <ClCompile Include="HandleFile.cpp">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="File_Handler.cpp">
+      <Filter>Source Files\Handlers</Filter>
+    </ClCompile>
+    <ClCompile Include="GuessMyNumber.cpp">
+      <Filter>Source Files\Games</Filter>
+    </ClCompile>
+    <ClCompile Include="GameSelection.cpp">
+      <Filter>Source Files\Handlers</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Game.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="File_Handler.h">
+      <Filter>Header Files\Handlers</Filter>
     </ClInclude>
-    <ClInclude Include="HighScores.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="HighScores_Handler.h">
+      <Filter>Header Files\Handlers</Filter>
     </ClInclude>
-    <ClInclude Include="HandleFile.h">
+    <ClInclude Include="Instructions_Handler.h">
+      <Filter>Header Files\Handlers</Filter>
+    </ClInclude>
+    <ClInclude Include="GuessMyNumber.h">
+      <Filter>Header Files\Games</Filter>
+    </ClInclude>
+    <ClInclude Include="GameSelection.h">
+      <Filter>Header Files\Handlers</Filter>
+    </ClInclude>
+    <ClInclude Include="AbstractGame.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

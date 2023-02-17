@@ -1,0 +1,43 @@
+{
+  "version": "2.1.0",
+  "$schema": "https://schemastore.azurewebsites.net/schemas/json/sarif-2.1.0-rtm.5.json",
+  "runs": [
+    {
+      "results": [],
+      "tool": {
+        "driver": {
+          "name": "PREfast",
+          "fullName": "PREfast Code Analysis",
+          "version": "14.34.31942.0",
+          "informationUri": "https://aka.ms/cpp/ca"
+        }
+      },
+      "invocations": [
+        {
+          "executionSuccessful": true
+        }
+      ],
+      "artifacts": [
+        {
+          "location": {
+            "uri": "file:///n:/code repositories/guessmynumberrepo/guess my number/guess my number/handlefile.cpp"
+          },
+          "roles": [
+            "analysisTarget"
+          ],
+          "hashes": {
+            "sha-256": "a70d350b70422b96b507bc692e0e76de3d01321d51b3825dc07de0b1b5c7c048"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///n:/code repositories/guessmynumberrepo/guess my number/guess my number/handlefile.h"
+          },
+          "hashes": {
+            "sha-256": "c20aeacc6ac9343ee95041b14280f0993a0277a0235bcd3a17191e63f223a03e"
+          }
+        }
+      ]
+    }
+  ]
+}
