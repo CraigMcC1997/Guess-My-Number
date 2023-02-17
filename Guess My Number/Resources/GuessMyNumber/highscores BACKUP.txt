@@ -1,0 +1,10 @@
+Craig, 6
+Dave, 7
+John, 7
+Sue, 8
+Craig, 8
+Hannah, 8
+Jade, 15
+Mary, 16
+Bill, 18
+Frank, 29

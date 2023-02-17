@@ -1,4 +1,4 @@
-#include "Game.h"
+#include "GameSelection.h"
 
 #if _DEBUG
 #pragma comment(linker, "/subsystem:\"console\" /entry:\"WinMainCRTStartup\"")
@@ -6,29 +6,29 @@
 
 using namespace std;
 
-Game* game;
+GameSelection* gameSelector;
 SDL_Event sdlEvent;  // variable to detect SDL events
 
 void init()
 {
 	cout << "----Welcome to GUESS MY NUMBER---- \n\n";
-	game = new Game();
+	gameSelector = new GameSelection();
 }
 
 int main(int arc, char* argv[])
 {
 	init();
 
-	bool running = true;
+	bool running{ true };
 	while (running) {	// the event loop
 		while (SDL_PollEvent(&sdlEvent)) {
 			if (sdlEvent.type == SDL_QUIT)
 				running = false;
 		}
-		game->playGame();
+		gameSelector->DisplayGamesMenu();
 	}
 
-	delete game;
+	delete gameSelector;
 	SDL_Quit();
 	return 0;
 }

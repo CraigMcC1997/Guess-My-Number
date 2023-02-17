@@ -1,2 +1,5 @@
-﻿  HandleFile.cpp
-  Guess My Number.vcxproj -> N:\Code Repositories\GuessNumberRepo\Guess My Number\Debug\Guess My Number.exe
+﻿  GameSelection.cpp
+  GuessMyNumber.cpp
+  main.cpp
+  Generating Code...
+  Guess My Number.vcxproj -> N:\Code Repositories\GuessMyNumberRepo\Guess My Number\Debug\Guess My Number.exe

@@ -142,15 +142,20 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Game.cpp" />
-    <ClCompile Include="HighScores.cpp" />
-    <ClCompile Include="HandleFile.cpp" />
+    <ClCompile Include="File_Handler.cpp" />
+    <ClCompile Include="GameSelection.cpp" />
+    <ClCompile Include="GuessMyNumber.cpp" />
+    <ClCompile Include="HighScores_Handler.cpp" />
+    <ClCompile Include="Instructions_Handler.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Game.h" />
-    <ClInclude Include="HighScores.h" />
-    <ClInclude Include="HandleFile.h" />
+    <ClInclude Include="AbstractGame.h" />
+    <ClInclude Include="File_Handler.h" />
+    <ClInclude Include="GameSelection.h" />
+    <ClInclude Include="GuessMyNumber.h" />
+    <ClInclude Include="HighScores_Handler.h" />
+    <ClInclude Include="Instructions_Handler.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
