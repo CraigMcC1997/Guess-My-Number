@@ -7,7 +7,7 @@ void GameSelection::GameSelectorMenu()
 	cout << "MENU:" << endl;
 	cout << "0. Exit" << endl;
 	cout << "1. Play Guess My Number Game" << endl;
-
+	cout << "2. Play X & O's Game" << endl;
 	cout << "-------------------------------- " << endl;
 	cout << "Choice: ";
 
@@ -25,7 +25,12 @@ void GameSelection::GameSelectorMenu()
 			exit(0); //close game window
 			break;
 		case 1:
+			cout << "----Welcome to GUESS MY NUMBER---- \n\n";
 			guessNumberGame->displayCurrentGameMenu(); //Play game
+			break;
+		case 2:
+			cout << "----Welcome to X & Os---- \n\n";
+			XandOsGame->displayCurrentGameMenu(); //Play game
 			break;
 		default:
 			cout << "please chose a valid option" << endl;

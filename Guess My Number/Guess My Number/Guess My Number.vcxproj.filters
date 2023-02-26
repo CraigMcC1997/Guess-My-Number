@@ -45,6 +45,9 @@
     <ClCompile Include="GameSelection.cpp">
       <Filter>Source Files\Handlers</Filter>
     </ClCompile>
+    <ClCompile Include="X&amp;Os.cpp">
+      <Filter>Source Files\Games</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="File_Handler.h">
@@ -64,6 +67,9 @@
     </ClInclude>
     <ClInclude Include="AbstractGame.h">
       <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="X&amp;Os.h">
+      <Filter>Header Files\Games</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

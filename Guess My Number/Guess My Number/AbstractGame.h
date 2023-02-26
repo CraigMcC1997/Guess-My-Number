@@ -17,4 +17,5 @@ public:
 	virtual void playGame() = 0;
 	virtual void gameOver() = 0;
 	virtual void patchInstructions() = 0;
+	virtual void displayCurrentGameMenu() = 0;
 };

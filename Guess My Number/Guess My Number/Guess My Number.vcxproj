@@ -148,6 +148,7 @@
     <ClCompile Include="HighScores_Handler.cpp" />
     <ClCompile Include="Instructions_Handler.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="X&amp;Os.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AbstractGame.h" />
@@ -156,6 +157,7 @@
     <ClInclude Include="GuessMyNumber.h" />
     <ClInclude Include="HighScores_Handler.h" />
     <ClInclude Include="Instructions_Handler.h" />
+    <ClInclude Include="X&amp;Os.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

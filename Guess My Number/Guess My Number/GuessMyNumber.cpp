@@ -61,9 +61,8 @@ void GuessMyNumber::menu()
  */
 int GuessMyNumber::randNum()
 {
-	//srand(static_cast<unsigned int>(time(0)));	//seeds the RNG
-	//return rand() % highestNum + 1;	//random number between 1-100
-	return 1;
+	srand(static_cast<unsigned int>(time(0)));	//seeds the RNG
+	return rand() % highestNum + 1;	//random number between 1-100
 }
 
 /**

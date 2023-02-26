@@ -11,7 +11,6 @@ SDL_Event sdlEvent;  // variable to detect SDL events
 
 void init()
 {
-	cout << "----Welcome to GUESS MY NUMBER---- \n\n";
 	gameSelector = new GameSelection();
 }
 

@@ -1,0 +1,10 @@
+X & Os / Noughts and Crosses/ Tic Tac Toe, 
+is a two-player game where players take turns placing 
+either an "X" or an "O" on a 3x3 grid. 
+The objective of the game is to get three of your symbols 
+in a row (either horizontally, vertically, or diagonally) 
+before your opponent does. If all spaces on the board are 
+filled and neither player has achieved this goal, 
+the game is a tie.
+To play chose a number from the displayed board, between 1-9.
+Where each number corresponds to a section on the board.
