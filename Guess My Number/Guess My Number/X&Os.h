@@ -6,14 +6,17 @@
 #include <glew.h>
 
 #include "AbstractGame.h"
+#include "XandOsHighScores.h"
 
 using namespace std;
 
 class XandOGame : public AbstractGame
 {
 private:
+	XandOsHighScores* highscores;
+
 	string gameBoard[9]{ "1","2","3","4","5","6","7","8","9" };
-	//char gameBoard2[9]{ 1,2,3,4,5,6,7,8,9 };
+
 	bool GAME_OVER{ false };
 	string Player1{}, Player2{};
 	string winner{};

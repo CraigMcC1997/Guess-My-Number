@@ -145,19 +145,22 @@
     <ClCompile Include="File_Handler.cpp" />
     <ClCompile Include="GameSelection.cpp" />
     <ClCompile Include="GuessMyNumber.cpp" />
-    <ClCompile Include="HighScores_Handler.cpp" />
+    <ClCompile Include="GuessNumberHighScores.cpp" />
     <ClCompile Include="Instructions_Handler.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="X&amp;Os.cpp" />
+    <ClCompile Include="XandOsHighScores.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AbstractGame.h" />
+    <ClInclude Include="AbstractHighscoresHandler.h" />
     <ClInclude Include="File_Handler.h" />
     <ClInclude Include="GameSelection.h" />
     <ClInclude Include="GuessMyNumber.h" />
-    <ClInclude Include="HighScores_Handler.h" />
+    <ClInclude Include="GuessNumberHighScores.h" />
     <ClInclude Include="Instructions_Handler.h" />
     <ClInclude Include="X&amp;Os.h" />
+    <ClInclude Include="XandOsHighScores.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -6,6 +6,7 @@
 #include <glew.h>
 
 #include "AbstractGame.h"
+#include "GuessNumberHighScores.h"
 
 using namespace std;
 
@@ -13,6 +14,8 @@ class GuessMyNumber : public AbstractGame
 {
 private:
 	enum GUESS_VALUE { TOO_HIGH, TOO_LOW, CORRECT_GUESS };
+
+	GuessNumberHighScores* highscores;
 
 	int lowestNum{ 0 };
 	int highestNum{ 100 };

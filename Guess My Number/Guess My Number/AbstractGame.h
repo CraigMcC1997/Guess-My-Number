@@ -1,10 +1,8 @@
 #pragma once
-#include "Highscores_Handler.h"
 #include "Instructions_Handler.h"
 
 class AbstractGame {
 protected:
-	HighScores* highscores;
 	Instructions* instructions;
 
 	string highscores_filename{ };

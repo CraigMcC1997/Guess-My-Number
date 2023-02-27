@@ -6,7 +6,7 @@ void GuessMyNumber::init()
 	highscores_filename = "../Resources/GuessMyNumber/highscores.txt";
 	instructions_filename = "../Resources/GuessMyNumber/instructions.txt";
 
-	highscores = new HighScores(highscores_filename);
+	highscores = new GuessNumberHighScores(highscores_filename);
 	instructions = new Instructions(instructions_filename);
 }
 

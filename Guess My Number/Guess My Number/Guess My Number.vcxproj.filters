@@ -25,15 +25,18 @@
     <Filter Include="Source Files\Games">
       <UniqueIdentifier>{4917cee3-0a16-4418-8a00-213315cc1a69}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Handlers\HighScores">
+      <UniqueIdentifier>{651c1a61-4c87-4fec-97c3-6a8f46231aaa}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Handlers\HighScores">
+      <UniqueIdentifier>{d8976aec-e432-48de-9c7a-46a81a81e002}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Instructions_Handler.cpp">
-      <Filter>Source Files\Handlers</Filter>
-    </ClCompile>
-    <ClCompile Include="HighScores_Handler.cpp">
       <Filter>Source Files\Handlers</Filter>
     </ClCompile>
     <ClCompile Include="File_Handler.cpp">
@@ -48,12 +51,15 @@
     <ClCompile Include="X&amp;Os.cpp">
       <Filter>Source Files\Games</Filter>
     </ClCompile>
+    <ClCompile Include="GuessNumberHighScores.cpp">
+      <Filter>Source Files\Handlers\HighScores</Filter>
+    </ClCompile>
+    <ClCompile Include="XandOsHighScores.cpp">
+      <Filter>Source Files\Handlers\HighScores</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="File_Handler.h">
-      <Filter>Header Files\Handlers</Filter>
-    </ClInclude>
-    <ClInclude Include="HighScores_Handler.h">
       <Filter>Header Files\Handlers</Filter>
     </ClInclude>
     <ClInclude Include="Instructions_Handler.h">
@@ -70,6 +76,15 @@
     </ClInclude>
     <ClInclude Include="X&amp;Os.h">
       <Filter>Header Files\Games</Filter>
+    </ClInclude>
+    <ClInclude Include="AbstractHighscoresHandler.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GuessNumberHighScores.h">
+      <Filter>Header Files\Handlers\HighScores</Filter>
+    </ClInclude>
+    <ClInclude Include="XandOsHighScores.h">
+      <Filter>Header Files\Handlers\HighScores</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

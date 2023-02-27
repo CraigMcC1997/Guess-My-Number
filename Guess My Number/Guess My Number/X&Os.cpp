@@ -11,7 +11,7 @@ void XandOGame::init()
 	highscores_filename = "../Resources/X&Os/highscores.txt";
 	instructions_filename = "../Resources/X&Os/instructions.txt";
 
-	//highscores = new HighScores(highscores_filename);
+	highscores = new XandOsHighScores(highscores_filename);
 	instructions = new Instructions(instructions_filename);
 }
 
@@ -47,8 +47,8 @@ void XandOGame::menu()
 			playGame(); //Play game
 			break;
 		case 2:
-			cout << "Highscores currently disabled for X&Os game" << endl;
-			//highscores->displayHighscores(); //display highscore table
+			//cout << "Highscores currently disabled for X&Os game" << endl;
+			highscores->displayHighscores(); //display highscore table
 			break;
 		case 3:
 			instructions->displayInstructions();
