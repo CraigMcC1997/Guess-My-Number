@@ -27,7 +27,9 @@ void XandOsHighScores::displayHighscores()
 void XandOsHighScores::updateHighscores(const string& name, const char score_type)
 {
 	if (name.empty()) {
-		std::cerr << "Invalid input: name cannot be empty.\n";
+
+
+		cerr << "Invalid input: name cannot be empty.\n";
 		return;
 	}
 

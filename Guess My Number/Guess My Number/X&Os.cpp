@@ -3,9 +3,9 @@
 /* TODO: Update function comments */
 /* TODO: Check player doesn't chose previously chosen section */
 /* TODO: Improve error checking */
-/* TODO: Ensure player choses valid icon */
 /* TODO: Add option for bot to play against */
-/* TODO: Add tracking for when game is draw */
+/* TODO: Have players input name first */
+	/* TODO: change "Player 1/2" to players names */
 
 void XandOGame::init()
 {
@@ -72,26 +72,67 @@ void XandOGame::displayCurrentGameMenu()
 	} while (!returnToMenu);
 }
 
+/* TODO: Change this to an override */
+void XandOGame::gameOver()
+{
+	return;
+}
+
 /**
  * Game has finished, display text to show this.
  * Compare score against highscore tables to see if update is required
  *
  */
-void XandOGame::gameOver()
+void XandOGame::gameOver(int round_count)
 {
 	cout << "----GAME OVER!!---- \n";
 	cout << "\nRESULTS: \n";
 
-	cout << "The winner was " << winner.icon << endl;
+	if (round_count < 9)
+		cout << "The winner was " << winner.icon << endl;
+	else
+		cout << "The game was a draw..." << endl;
 
-	cout << "Winning Player: To save your score please enter your first name: ";
-	cin >> winner.name;
+	/* get players name for updating scoring system */
+	while (true) {
+		cout << "Winning Player: To save your score please enter your first name: ";
+		cin >> winner.name;
 
-	cout << "Losing Player: To save your score please enter your first name: ";
-	cin >> loser.name;
+		if (cin.fail()) {
+			cin.clear(); // clear the error state
+			cin.ignore(numeric_limits<streamsize>::max(), '\n'); // ignore the invalid input
+			cout << "Invalid input. Please enter a valid option." << endl;
+		}
+		else {
+			break; // valid input, break out of the loop
+		}
+	}
 
-	highscores->updateHighscores(winner.name, 'W');
-	highscores->updateHighscores(loser.name, 'L');
+	while (true) {
+		cout << "Losing Player: To save your score please enter your first name: ";
+		cin >> loser.name;
+
+		if (cin.fail()) {
+			cin.clear(); // clear the error state
+			cin.ignore(numeric_limits<streamsize>::max(), '\n'); // ignore the invalid input
+			cout << "Invalid input. Please enter a valid option." << endl;
+		}
+		else {
+			break; // valid input, break out of the loop
+		}
+	}
+
+	if (round_count < 9)
+	{
+		highscores->updateHighscores(winner.name, 'W');
+		highscores->updateHighscores(loser.name, 'L');
+	}
+	else
+	{
+		/* TODO: update name for more clarity, this is a draw state, but uses wrong terms */
+		highscores->updateHighscores(winner.name, 'D');
+		highscores->updateHighscores(loser.name, 'D');
+	}
 
 	cout << "\nThanks for playing X & O's \n\n";
 	cout << "-------------------------------- " << endl;
@@ -106,8 +147,11 @@ void XandOGame::playGame()
 {
 	const int MAX_ROUNDS{ 9 };
 	int currentRound{ 1 };
-	GAME_OVER = false; /* resetting in case multiple games played */
 
+	/* resetting in case multiple games played */
+	resetGameBoard();
+
+	/* allow players to chose X or O game icons */
 	playersChoseIcon();
 
 	for (int i = 0; i < MAX_ROUNDS; i++)
@@ -125,7 +169,7 @@ void XandOGame::playGame()
 		else
 			getPlayersNextMove(player2.icon, i);
 
-		/* TODO: check if anyone has won yet */
+		/* check if anyone has won yet */
 		if (i >= 4) /* can't have a winner before round 5 */
 		{
 			if (checkForWinner(i))
@@ -148,9 +192,7 @@ void XandOGame::playGame()
 		currentRound++;
 	}
 
-	/* TODO: Enable this after game is ready */
-
-	gameOver();
+	gameOver(currentRound - 1);
 }
 
 /**
@@ -163,22 +205,40 @@ void XandOGame::playGame()
 void XandOGame::getPlayersNextMove(string player, int round)
 {
 	int option{};
-
 	int current_player{};
-	if (round % 2 == 0)
-		current_player = 1;
-	else
-		current_player = 2;
 
-	cout << "Player " << current_player << " please choose a numbered section : ";
-	cin >> option;
+	/* set current player based on the current round being odd or even */
+	current_player = (round % 2 == 0) ? 1 : 2;
 
+	while (true) {
+		/* allow player to chose a position on the board */
+		cout << "Player " << current_player << " please choose a numbered section : ";
+		cin >> option;
+
+		if (cin.fail() || option < 0 || option > 9) {
+			cin.clear(); // clear the error state
+			cin.ignore(numeric_limits<streamsize>::max(), '\n'); // ignore the invalid input
+			cout << "Invalid input. Please enter a valid option." << endl;
+		}
+		else {
+			break; // valid input, break out of the loop
+		}
+	}
+
+	/* update the game board with the players icon */
 	gameBoard[option - 1] = player;
 }
 
+/* Display the current state of the game board to the console window */
 void XandOGame::printGameBoard()
 {
 	string breaker{ " | " };
+
+	/* temp: display players icons */
+	cout << "Player 1 | " << player1.icon << endl;
+	cout << "Player 2 | " << player2.icon << endl;
+	cout << "_____________\n" << endl;
+
 	cout << "  " << gameBoard[0] << breaker << gameBoard[1] << breaker << gameBoard[2] << endl;
 	cout << "----|---|----\n";
 	cout << "  " << gameBoard[3] << breaker << gameBoard[4] << breaker << gameBoard[5] << endl;
@@ -186,25 +246,50 @@ void XandOGame::printGameBoard()
 	cout << "  " << gameBoard[6] << breaker << gameBoard[7] << breaker << gameBoard[8] << endl;
 }
 
+/**
+ * Player 1 choses if they are X or O icon.
+ * Player 2 is given the remaining icon automatically
+ */
 void XandOGame::playersChoseIcon()
 {
-	/* TODO: add error checking */
-	cout << "Player 1 chose X or O:" << endl;
-	cin >> player1.icon;
 
-	/* TODO: make ternary */
-	if (player1.icon == "X" || player1.icon == "x")
+	while (true)
 	{
-		player1.icon = "X";
-		player2.icon = "O";
+		/* allow player to chose a icon */
+		cout << "Player 1 chose X or O: " << endl;
+		cin >> player1.icon;
+
+		if (cin.fail())
+		{
+			cin.clear(); // clear the error state
+			cin.ignore(numeric_limits<streamsize>::max(), '\n'); // ignore the invalid input
+			cout << "Invalid input. Please enter a valid option." << endl;
+		}
+		else
+		{
+			if (player1.icon == "X" || player1.icon == "x" || player1.icon == "O" || player1.icon == "o")
+				break; // valid input, break out of the loop
+			else
+				cout << "Invalid input. Please enter either X or O" << endl;
+		}
 	}
 
-	else
-	{
-		player1.icon = "O";
-		player2.icon = "X";
-	}
+	/* set players icon with any corrections */
+	player1.icon = (player1.icon == "X" || player1.icon == "x") ? "X" : "O";
+	player2.icon = (player1.icon == "X" || player1.icon == "x") ? "O" : "X";
+}
 
+/* reset board values to starting values */
+void XandOGame::resetGameBoard()
+{
+	GAME_OVER = false;
+
+	int count{};
+	for (auto& i : gameBoard)
+	{
+		i = GAME_BOARD_START_STATE[count];
+		count++;
+	}
 }
 
 /** Not required for this game */

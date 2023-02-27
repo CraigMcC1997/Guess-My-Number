@@ -25,7 +25,9 @@ void GuessNumberHighScores::displayHighscores()
 void GuessNumberHighScores::updateHighscores(HighscoreEntry highscores[], const string& name, int score)
 {
 	if (name.empty() || score <= 0) {
-		std::cerr << "Invalid input: name cannot be empty and score must be greater than zero.\n";
+
+
+		cerr << "Invalid input: name cannot be empty and score must be greater than zero.\n";
 		return;
 	}
 
@@ -72,8 +74,20 @@ void GuessNumberHighScores::compareHighscore(int& currentScore)
 	{
 		string name;
 		cout << "You made it into the top 10!";
-		cout << "To save your score please enter your first name: ";
-		cin >> name;
+
+		while (true) {
+			cout << "To save your score please enter your first name: ";
+			cin >> name;
+
+			if (cin.fail()) {
+				cin.clear(); // clear the error state
+				cin.ignore(numeric_limits<streamsize>::max(), '\n'); // ignore the invalid input
+				cout << "Invalid input. Please enter a valid option." << endl;
+			}
+			else {
+				break; // valid input, break out of the loop
+			}
+		}
 
 		if (!name.empty() && currentScore > 0)
 			updateHighscores(highscores, name, currentScore);

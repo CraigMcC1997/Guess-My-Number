@@ -7,63 +7,94 @@
         {
           "ruleId": "C26495",
           "message": {
-            "text": "Variable 'HighScores::HighscoreEntry::score' is uninitialized. Always initialize a member variable (type.6)."
+            "text": "Variable 'GuessNumberHighScores::HighscoreEntry::position' is uninitialized. Always initialize a member variable (type.6)."
           },
           "locations": [
             {
               "physicalLocation": {
                 "artifactLocation": {
-                  "uri": "file:///N:/Code Repositories/GuessMyNumberRepo/Guess My Number/Guess My Number/HighScores.h"
+                  "uri": "file:///N:/Code Repositories/GuessMyNumberRepo/Guess My Number/Guess My Number/GuessNumberHighScores.h"
                 },
                 "region": {
-                  "startLine": 21,
+                  "startLine": 16,
                   "startColumn": 2,
-                  "endLine": 21,
+                  "endLine": 16,
                   "endColumn": 2
                 }
               },
               "logicalLocations": [
                 {
-                  "fullyQualifiedName": "HighScores::HighscoreEntry::{ctor}",
-                  "decoratedName": "??0HighscoreEntry@HighScores@@QAE@XZ",
+                  "fullyQualifiedName": "GuessNumberHighScores::HighscoreEntry::{ctor}",
+                  "decoratedName": "??0HighscoreEntry@GuessNumberHighScores@@QAE@XZ",
                   "kind": "function"
                 }
               ]
             }
           ],
           "properties": {
-            "targetSymbol": "HighScores::HighscoreEntry::score"
+            "targetSymbol": "GuessNumberHighScores::HighscoreEntry::position"
           }
         },
         {
           "ruleId": "C26495",
           "message": {
-            "text": "Variable 'HighScores::HighscoreEntry::position' is uninitialized. Always initialize a member variable (type.6)."
+            "text": "Variable 'GuessNumberHighScores::HighscoreEntry::score' is uninitialized. Always initialize a member variable (type.6)."
           },
           "locations": [
             {
               "physicalLocation": {
                 "artifactLocation": {
-                  "uri": "file:///N:/Code Repositories/GuessMyNumberRepo/Guess My Number/Guess My Number/HighScores.h"
+                  "uri": "file:///N:/Code Repositories/GuessMyNumberRepo/Guess My Number/Guess My Number/GuessNumberHighScores.h"
                 },
                 "region": {
-                  "startLine": 21,
+                  "startLine": 16,
                   "startColumn": 2,
-                  "endLine": 21,
+                  "endLine": 16,
                   "endColumn": 2
                 }
               },
               "logicalLocations": [
                 {
-                  "fullyQualifiedName": "HighScores::HighscoreEntry::{ctor}",
-                  "decoratedName": "??0HighscoreEntry@HighScores@@QAE@XZ",
+                  "fullyQualifiedName": "GuessNumberHighScores::HighscoreEntry::{ctor}",
+                  "decoratedName": "??0HighscoreEntry@GuessNumberHighScores@@QAE@XZ",
                   "kind": "function"
                 }
               ]
             }
           ],
           "properties": {
-            "targetSymbol": "HighScores::HighscoreEntry::position"
+            "targetSymbol": "GuessNumberHighScores::HighscoreEntry::score"
+          }
+        },
+        {
+          "ruleId": "C26495",
+          "message": {
+            "text": "Variable 'AbstractGame::instructions' is uninitialized. Always initialize a member variable (type.6)."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///N:/Code Repositories/GuessMyNumberRepo/Guess My Number/Guess My Number/AbstractGame.h"
+                },
+                "region": {
+                  "startLine": 19,
+                  "startColumn": 1,
+                  "endLine": 19,
+                  "endColumn": 1
+                }
+              },
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "AbstractGame::{ctor}",
+                  "decoratedName": "??0AbstractGame@@QAE@XZ",
+                  "kind": "function"
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "targetSymbol": "AbstractGame::instructions"
           }
         }
       ],
@@ -83,13 +114,24 @@
       "artifacts": [
         {
           "location": {
-            "uri": "file:///N:/Code Repositories/GuessMyNumberRepo/Guess My Number/Guess My Number/HighScores.h"
+            "uri": "file:///N:/Code Repositories/GuessMyNumberRepo/Guess My Number/Guess My Number/GuessNumberHighScores.h"
           },
           "roles": [
             "resultFile"
           ],
           "hashes": {
-            "sha-256": "c0e876a172a989133cd9f0834a869fbade3d558bef380224085dc2b606eb5606"
+            "sha-256": "c9cd7a6809ea59d7a59b735b9cc4e3aae4d7aad84dc0844758ffd339e25f39da"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///N:/Code Repositories/GuessMyNumberRepo/Guess My Number/Guess My Number/AbstractGame.h"
+          },
+          "roles": [
+            "resultFile"
+          ],
+          "hashes": {
+            "sha-256": "28e9b9c8169a4d098bd5250da6be899d11db07635891c017f9fbe9c6cbb98e25"
           }
         },
         {
@@ -100,7 +142,7 @@
             "analysisTarget"
           ],
           "hashes": {
-            "sha-256": "d7c8aaa1f182f8239ca7f592d963de4fb479101961fc5b1a92aed8c3f49229fd"
+            "sha-256": "c4131da7c0533f04fc4803c84b646bc4323a9ea2fba934c21ba53a56a3315676"
           }
         },
         {
@@ -108,7 +150,15 @@
             "uri": "file:///n:/code repositories/guessmynumberrepo/guess my number/guess my number/gameselection.h"
           },
           "hashes": {
-            "sha-256": "edafb092e6015ec6f9643246754494c7700c5d2d50d94a63f9bcbd7e62d7588a"
+            "sha-256": "dc4add67b873a11ecd2317be1a478b97d772c62a456537c7110d0f472e5d2b25"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///n:/code repositories/guessmynumberrepo/guess my number/guess my number/guessmynumber.h"
+          },
+          "hashes": {
+            "sha-256": "aa83449b938a774081841f40f0abf5e2111f136850d1d5093146f955154c985a"
           }
         },
         {
@@ -481,7 +531,15 @@
         },
         {
           "location": {
-            "uri": "file:///n:/code repositories/guessmynumberrepo/guess my number/guess my number/handlefile.h"
+            "uri": "file:///n:/code repositories/guessmynumberrepo/guess my number/guess my number/instructions_handler.h"
+          },
+          "hashes": {
+            "sha-256": "d9a88dc25a804e78867d76b217fb0cc8d60177c1fa287c6e87d0297d56b092af"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///n:/code repositories/guessmynumberrepo/guess my number/guess my number/file_handler.h"
           },
           "hashes": {
             "sha-256": "c20aeacc6ac9343ee95041b14280f0993a0277a0235bcd3a17191e63f223a03e"
@@ -489,10 +547,26 @@
         },
         {
           "location": {
-            "uri": "file:///n:/code repositories/guessmynumberrepo/guess my number/guess my number/guessmynumber.h"
+            "uri": "file:///n:/code repositories/guessmynumberrepo/guess my number/guess my number/abstracthighscoreshandler.h"
           },
           "hashes": {
-            "sha-256": "3b1b5b662efbb8306dd74f18581905225eb90a71fe1456e34a9b72bbbb956a6e"
+            "sha-256": "c718487d02a997ae9ee475bec9a5381dbc0f2a6ab728971e06b241e58e805e91"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///n:/code repositories/guessmynumberrepo/guess my number/guess my number/x&os.h"
+          },
+          "hashes": {
+            "sha-256": "90e3afdd90939d0c3c3bec6f544a4d0dbdc6d6bcdb0a3200f80ef6121ad0ba9b"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///n:/code repositories/guessmynumberrepo/guess my number/guess my number/xandoshighscores.h"
+          },
+          "hashes": {
+            "sha-256": "3078c2cb9b31e210c2b091dc6a9b38ff82ce8443d9777925b3ff2b9da037f049"
           }
         }
       ]

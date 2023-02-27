@@ -10,9 +10,9 @@ private:
 	string current_scores[10];
 
 	struct HighscoreEntry {
-		string name;
-		int score;
-		int position;
+		string name{};
+		int score{};
+		int position{};
 	};
 
 	HighscoreEntry highscores[10];

@@ -15,7 +15,8 @@ class XandOGame : public AbstractGame
 private:
 	XandOsHighScores* highscores;
 
-	string gameBoard[9]{ "1","2","3","4","5","6","7","8","9" };
+	string gameBoard[9]{};
+	const string GAME_BOARD_START_STATE[9]{ "1","2","3","4","5","6","7","8","9" };
 
 	bool GAME_OVER{ false };
 
@@ -33,6 +34,7 @@ private:
 	void getPlayersNextMove(string player, int round);
 	void printGameBoard();
 	void playersChoseIcon();
+	void resetGameBoard();
 
 	bool checkForWinner(int current_round);
 	bool checkHorizontal(string checkValue);
@@ -51,6 +53,7 @@ public:
 	void menu();
 	void playGame();
 	void gameOver();
+	void gameOver(int round_count);
 	void patchInstructions();
 	void displayCurrentGameMenu();
 };
