@@ -18,8 +18,16 @@ private:
 	string gameBoard[9]{ "1","2","3","4","5","6","7","8","9" };
 
 	bool GAME_OVER{ false };
-	string Player1{}, Player2{};
-	string winner{};
+
+	struct Player {
+		string name{};
+		string icon{};
+	};
+
+	Player player1{};
+	Player player2{};
+	Player winner{};
+	Player loser{};
 
 	/* game specific functions */
 	void getPlayersNextMove(string player, int round);
@@ -45,6 +53,4 @@ public:
 	void gameOver();
 	void patchInstructions();
 	void displayCurrentGameMenu();
-
-
 };

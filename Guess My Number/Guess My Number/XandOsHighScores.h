@@ -1,6 +1,10 @@
 #pragma once
 #include "AbstractHighscoresHandler.h"
 
+/* TODO: Update formatting for high scores output */
+/* TODO: Re-enable updating highscores based on game wins*/
+/* TODO: Highscores ranking: most wins, most draws, least loses */
+
 using namespace std;
 
 class XandOsHighScores : public AbstractHighscoresHandler
@@ -10,17 +14,20 @@ private:
 	string current_scores[10];
 
 	struct HighscoreEntry {
-		string name;
-		int position;
-		int wins;
-		int draws;
-		int loses;
+		string name{};
+		int position{};
+		int wins{};
+		int draws{};
+		int loses{};
 	};
 
 	HighscoreEntry highscores[10];
 
+	/* private functions */
+	void increaseSpecificScore(HighscoreEntry& entry, const char score_type);
+
 public:
-	XandOsHighScores(string filename) : filename{ filename }
+	XandOsHighScores(string& filename) : filename{ filename }
 	{
 		int err = handleFile->loadAll(filename, current_scores);	//load highscores
 		if (err != NUM_HIGHSCORES)
@@ -31,8 +38,7 @@ public:
 	}
 
 	void displayHighscores();
-	void compareHighscore(int&);
-	void updateHighscores(HighscoreEntry highscores[], const string& name, int score);
+	void updateHighscores(const string& name, const char type);
 	void saveNewScores();
 	void inputHighscores();
 };

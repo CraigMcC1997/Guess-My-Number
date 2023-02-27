@@ -18,7 +18,7 @@ private:
 	HighscoreEntry highscores[10];
 
 public:
-	GuessNumberHighScores(string filename) : filename{ filename }
+	GuessNumberHighScores(string& filename) : filename{ filename }
 	{
 		int err = handleFile->loadAll(filename, current_scores);	//load highscores
 		if (err != NUM_HIGHSCORES)
@@ -28,9 +28,11 @@ public:
 		inputHighscores();
 	}
 
-	void displayHighscores();
 	void compareHighscore(int&);
 	void updateHighscores(HighscoreEntry highscores[], const string& name, int score);
+
+	/* required by abstract file */
+	void displayHighscores();
 	void saveNewScores();
 	void inputHighscores();
 };

@@ -9,7 +9,6 @@ protected:
 	const int NUM_HIGHSCORES{ 10 };
 public:
 	virtual void displayHighscores() = 0;
-	virtual void compareHighscore(int&) = 0;
 	virtual void saveNewScores() = 0;
 	virtual void inputHighscores() = 0;
 };

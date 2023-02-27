@@ -50,7 +50,7 @@ void GuessNumberHighScores::updateHighscores(HighscoreEntry highscores[], const 
 	saveNewScores();
 
 	// Print a message to the user
-	cout << "\n----CONGRADULATIONS YOU MADE IT INTO THE TOP 10----" << endl;
+	cout << "\n----CONGRATULATIONS YOU MADE IT INTO THE TOP 10----" << endl;
 
 	// Display the updated highscore table
 	displayHighscores();

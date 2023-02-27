@@ -24,69 +24,70 @@ void XandOsHighScores::displayHighscores()
  * @param name is the players name
  * @param score is the current score after finishing the game
  */
-void XandOsHighScores::updateHighscores(HighscoreEntry highscores[], const string& name, int score)
+void XandOsHighScores::updateHighscores(const string& name, const char score_type)
 {
-	//if (name.empty() || score <= 0) {
-	//	std::cerr << "Invalid input: name cannot be empty and score must be greater than zero.\n";
-	//	return;
-	//}
+	if (name.empty()) {
+		std::cerr << "Invalid input: name cannot be empty.\n";
+		return;
+	}
 
-	//// Add the new score to the highscore table
-	//HighscoreEntry new_entry = { name, score };
+	/* todo: check name, add new entry if doesn't exist, else update existing */
+	/* todo: check type, if new entry add, else update existing */
+	bool scorePreviouslySaved = false;
+	int count{};
+	do
+	{
+		if (highscores[count].name == name)
+		{
+			scorePreviouslySaved = true;
+			break;
+		}
 
-	////replace the lowest score with the new entry
-	//highscores[NUM_HIGHSCORES - 1] = new_entry;
+		count++;
+	} while (!scorePreviouslySaved && count < NUM_HIGHSCORES);
 
-	//// Sort the highscores in descending order
-	//sort(highscores, highscores + NUM_HIGHSCORES,
-	//	[](const HighscoreEntry& a, const HighscoreEntry& b)
-	//	{ return a.score < b.score; });
+	/* update exisiting highscores */
+	if (scorePreviouslySaved)
+	{
+		increaseSpecificScore(highscores[count], score_type);
+	}
+	else /* add new score */
+	{
+		HighscoreEntry new_entry = { name, NULL, 0, 0, 0 };
 
-	//// Update the positions of the entries
-	//for (int i = 0; i < NUM_HIGHSCORES; i++)
-	//{
-	//	highscores[i].position = i + 1;
-	//}
+		increaseSpecificScore(new_entry, score_type);
 
-	//// Save the new highscores to file
-	//saveNewScores();
+		// Add the new score to the highscore table
+		highscores[NUM_HIGHSCORES - 1] = new_entry; //replace the lowest score with the new entry
 
-	//// Print a message to the user
-	//cout << "\n----CONGRADULATIONS YOU MADE IT INTO THE TOP 10----" << endl;
+		// Sort the highscores in descending order
+		sort(highscores, highscores + NUM_HIGHSCORES,
+			[](const HighscoreEntry& a, const HighscoreEntry& b)
+			{ return a.loses > b.loses; });
 
-	//// Display the updated highscore table
-	//displayHighscores();
-}
+		sort(highscores, highscores + NUM_HIGHSCORES,
+			[](const HighscoreEntry& a, const HighscoreEntry& b)
+			{ return a.draws < b.draws; });
 
-/**
- * Check the players score is within the top 10 scores.
- * If so then update the high scores table if the player
- * inputs their name
- *
- * @param currentScore is the players score after finishing the game
- */
-void XandOsHighScores::compareHighscore(int& currentScore)
-{
-	//string::size_type sz{};
-	//int tenthPlace = highscores[NUM_HIGHSCORES - 1].score;
+		sort(highscores, highscores + NUM_HIGHSCORES,
+			[](const HighscoreEntry& a, const HighscoreEntry& b)
+			{ return a.wins < b.wins; });
 
-	//if (currentScore < tenthPlace) //is score in the top 10
-	//{
-	//	string name;
-	//	cout << "You made it into the top 10!";
-	//	cout << "To save your score please enter your first name: ";
-	//	cin >> name;
+		// Update the positions of the entries
+		for (int i = 0; i < NUM_HIGHSCORES; i++)
+		{
+			highscores[i].position = i + 1;
+		}
+	}
 
-	//	if (!name.empty() && currentScore > 0)
-	//		updateHighscores(highscores, name, currentScore);
-	//	else
-	//		cout << "score not valid, could not be saved";
-	//}
-	//else
-	//{
-	//	cout << "Unfortunately you did not makee it into the top 10!" << endl;
-	//	cout << "Try again next time for a chance to join our leaderboard!" << endl;
-	//}
+	// Save the new highscores to file
+	saveNewScores();
+
+	// Print a message to the user
+	cout << "\n----CONGRATULATIONS YOU MADE IT INTO THE TOP 10----" << endl;
+
+	// Display the updated highscore table
+	displayHighscores();
 }
 
 /**
@@ -99,8 +100,8 @@ void XandOsHighScores::saveNewScores()
 	for (int i = 0; i < NUM_HIGHSCORES; i++) {
 		current_scores[i] = highscores[i].name + ", "
 			+ "W=" + to_string(highscores[i].wins)
-			+ "D=" + to_string(highscores[i].draws)
-			+ "L=" + to_string(highscores[i].loses);
+			+ " D=" + to_string(highscores[i].draws)
+			+ " L=" + to_string(highscores[i].loses);
 	}
 
 	int err = handleFile->saveToFile(filename, current_scores, NUM_HIGHSCORES);	//load highscores
@@ -157,4 +158,14 @@ void XandOsHighScores::inputHighscores()
 
 		i++;
 	}
+}
+
+void XandOsHighScores::increaseSpecificScore(HighscoreEntry& entry, const char score_type)
+{
+	if (score_type == 'W')
+		entry.wins++;
+	else if (score_type == 'D')
+		entry.draws++;
+	else if (score_type == 'L')
+		entry.loses++;
 }

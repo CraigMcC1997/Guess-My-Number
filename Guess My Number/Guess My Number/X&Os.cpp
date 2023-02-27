@@ -2,8 +2,10 @@
 
 /* TODO: Update function comments */
 /* TODO: Check player doesn't chose previously chosen section */
-/* TODO: Check if player has won */
 /* TODO: Improve error checking */
+/* TODO: Ensure player choses valid icon */
+/* TODO: Add option for bot to play against */
+/* TODO: Add tracking for when game is draw */
 
 void XandOGame::init()
 {
@@ -47,7 +49,6 @@ void XandOGame::menu()
 			playGame(); //Play game
 			break;
 		case 2:
-			//cout << "Highscores currently disabled for X&Os game" << endl;
 			highscores->displayHighscores(); //display highscore table
 			break;
 		case 3:
@@ -80,11 +81,17 @@ void XandOGame::gameOver()
 {
 	cout << "----GAME OVER!!---- \n";
 	cout << "\nRESULTS: \n";
-	/* TODO: print winner here */
-	cout << "The winner was " << winner << endl;
 
-	// check if the player made it into the top 10
-	//highscores->compareHighscore(overallGuesses);
+	cout << "The winner was " << winner.icon << endl;
+
+	cout << "Winning Player: To save your score please enter your first name: ";
+	cin >> winner.name;
+
+	cout << "Losing Player: To save your score please enter your first name: ";
+	cin >> loser.name;
+
+	highscores->updateHighscores(winner.name, 'W');
+	highscores->updateHighscores(loser.name, 'L');
 
 	cout << "\nThanks for playing X & O's \n\n";
 	cout << "-------------------------------- " << endl;
@@ -92,7 +99,7 @@ void XandOGame::gameOver()
 
 /**
  * Game starting point here.
- * Play for MAX_ROUNDS amount of rounds, opening the current round each time
+ * Play for MAX_ROUNDS amount of rounds
  * When game ends, run gameOver() function.
  */
 void XandOGame::playGame()
@@ -114,9 +121,9 @@ void XandOGame::playGame()
 
 		/** current player choses game tile on board */
 		if (i % 2 == 0)
-			getPlayersNextMove(Player1, i);
+			getPlayersNextMove(player1.icon, i);
 		else
-			getPlayersNextMove(Player2, i);
+			getPlayersNextMove(player2.icon, i);
 
 		/* TODO: check if anyone has won yet */
 		if (i >= 4) /* can't have a winner before round 5 */
@@ -124,10 +131,15 @@ void XandOGame::playGame()
 			if (checkForWinner(i))
 			{
 				if (i % 2 == 0)
-					winner = Player1;
+				{
+					winner = player1;
+					loser = player2;
+				}
 				else
-					winner = Player2;
-
+				{
+					winner = player2;
+					loser = player1;
+				}
 				cout << "We have a winner!!!" << endl;
 				GAME_OVER = true;
 			}
@@ -178,19 +190,19 @@ void XandOGame::playersChoseIcon()
 {
 	/* TODO: add error checking */
 	cout << "Player 1 chose X or O:" << endl;
-	cin >> Player1;
+	cin >> player1.icon;
 
 	/* TODO: make ternary */
-	if (Player1 == "X" || Player1 == "x")
+	if (player1.icon == "X" || player1.icon == "x")
 	{
-		Player1 = "X";
-		Player2 = "O";
+		player1.icon = "X";
+		player2.icon = "O";
 	}
 
 	else
 	{
-		Player1 = "O";
-		Player2 = "X";
+		player1.icon = "O";
+		player2.icon = "X";
 	}
 
 }
@@ -210,9 +222,9 @@ bool XandOGame::checkForWinner(int current_round)
 {
 	string player{};
 	if (current_round % 2 == 0) /* player 1 round */
-		player = Player1;
+		player = player1.icon;
 	else						/* player 2 round */
-		player = Player2;
+		player = player2.icon;
 
 	if (checkHorizontal(player) || checkVertical(player) || checkDiagonal(player))
 		return true;
