@@ -13,5 +13,5 @@ cmake -S . -B build
 ### build tests
 cmake --build build
 
-### enter directory and then run the tests
-cd build && ctest
+### enter directory, run the tests, leave directory
+pushd build/ && ctest && popd
