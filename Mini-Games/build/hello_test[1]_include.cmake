@@ -1,0 +1,5 @@
+if(EXISTS "N:/Code Repositories/Testing Adding Build System and Testing/Mini-Games/build/hello_test[1]_tests.cmake")
+  include("N:/Code Repositories/Testing Adding Build System and Testing/Mini-Games/build/hello_test[1]_tests.cmake")
+else()
+  add_test(hello_test_NOT_BUILT hello_test_NOT_BUILT)
+endif()

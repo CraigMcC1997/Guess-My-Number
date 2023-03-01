@@ -1,0 +1,10 @@
+^N:\CODE REPOSITORIES\TESTING ADDING BUILD SYSTEM AND TESTING\MINI-GAMES\BUILD\_DEPS\GOOGLETEST-SRC\GOOGLETEST\CMAKELISTS.TXT
+setlocal
+"C:\Program Files\CMake\bin\cmake.exe" "-SN:/Code Repositories/Testing Adding Build System and Testing/Mini-Games" "-BN:/Code Repositories/Testing Adding Build System and Testing/Mini-Games/build" --check-stamp-file "N:/Code Repositories/Testing Adding Build System and Testing/Mini-Games/build/_deps/googletest-build/googletest/CMakeFiles/generate.stamp"
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd

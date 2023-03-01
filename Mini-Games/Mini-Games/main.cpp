@@ -1,3 +1,4 @@
+#include <SDL.h>
 #include "GameSelection.h"
 
 #if _DEBUG

@@ -2,8 +2,6 @@
 #include <iostream>
 #include <ctime>
 #include <limits>
-#include <SDL.h>
-#include <glew.h>
 
 #include "AbstractGame.h"
 #include "XandOsHighScores.h"
