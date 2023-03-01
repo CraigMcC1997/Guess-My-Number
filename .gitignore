@@ -31,3 +31,6 @@
 
 # Debug
 x64/
+
+# Testing Files: Only required for debugging/ testing purposes
+build/
